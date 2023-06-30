@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-CZENQ1ZPEH"></script>
 <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-CZENQ1ZPEH",{anonymize_ip:!0})</script><link rel="stylesheet" href="/assets/css/styles.e986bf59.css">
-<link rel="preload" href="/assets/js/runtime~main.9c06c69e.js" as="script">
+<link rel="preload" href="/assets/js/runtime~main.ecd44b7a.js" as="script">
 <link rel="preload" href="/assets/js/main.1f82de81.js" as="script">
 </head>
 <body class="navigation-with-keyboard" data-theme="light">
@@ -23,10 +23,10 @@ Shares enabled but Disk Shares disabled.</p><p>It is sometimes important to real
 of the <strong>same</strong> underlying file system. Every file/folder that appears
 under a User Share will also appear under the Disk Share for the
 physical drive that is storing the file/folder.</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="user-shares">User Shares<a href="#user-shares" class="hash-link" aria-label="Direct link to User Shares" title="Direct link to User Shares">​</a></h2><p>User Shares can be enabled/disabled via Settings-<!-- -->&gt;<!-- -->Global Share
-Settings.</p><p>From the <strong>Shares</strong> tab, you can either <em>create</em> a new share or <em>edit&#x27;
+Settings.</p><p>From the <strong>Shares</strong> tab, you can either <em>create</em> a new share or <em>edit</em>
 an existing share. Click the <strong>Help</strong> icon in the top-right of the
 Unraid webGui when configuring shares for more information on the
-settings available.</em></p><p>User Shares are implemented by using Linux Fuse file system support.
+settings available._</p><p>User Shares are implemented by using Linux Fuse file system support.
 What they do is provide an aggregated view of all top level folders of
 the same name across the cache and the array drives. The name of this
 top level folder is used as the share name. From a user perspective this
@@ -37,7 +37,7 @@ path <strong><em>/mnt/user</em></strong>. This includes the files on the main ar
 any for the share on any pool. It is important to note that a User Share
 is just a logical view imposed on top of the underlying physical file
 system so you can see the same files if you look at the physical level
-(as described below for Disk Shares.</p><ul><li>Current releases of Unraid also include the mount point
+(as described below for Disk Shares).</p><ul><li>Current releases of Unraid also include the mount point
 <strong><em>/mnt/user0</em></strong> that shows the files in User Shares OMITTING any
 files for a share that are on any pool. This is just a different
 view of the files on your server. <em>However This mount point is now
@@ -77,7 +77,7 @@ get an out-of-space error even though there is plenty of space on
 other array drives that the share can logically use.</p><p>Changing any of these settings for a share only affects where any new
 files are put. Any files already present in the share are left where
 they are located when a setting is changed. It takes Manual action to
-move existing files.</p><p><strong>Important</strong>: The Linux file system used by Unraid are case sensitive
+move existing files.</p><p><strong>Important</strong>: The Linux file systems used by Unraid are case sensitive
 while the SMB share system is not. As an example this means that a
 folder at the Linux level a folder called &#x27;media&#x27; is different to one
 called &#x27;Media&#x27;. However at the network level case is ignored so for
@@ -102,16 +102,16 @@ largest disk. A new high water level is again set to one-half of the
 previous high level once all the disks have less free space than the
 current high water level.</p><p><img loading="lazy" src="/assets/images/High-Water_Allocation_Method-73aceb5fbd6984e821b9a40d254126be.JPG" width="836" height="505" class="img_ev3q"></p><p>The above example shows what will occur when there is a mix of 4 disks
 varying is size from 500gig to 2T in size.</p><p>First Pass - The high water level is set to one-half of the size of the
-2T drive or 1T. Each disk will be filled until it has \&lt;1T of free space
+2T drive or 1T. Each disk will be filled until it has &lt;1T of free space
 remaining. This means no data is stored on disk1 or disk2 since both
-already have \&lt;1T of free space. 500gig of data will be stored on disk3
+already have &lt;1T of free space. 500gig of data will be stored on disk3
 followed by 1T of data being stored on disk4.</p><p>Second Pass - The high water level is reset to one-half of the previous
-level or 500gig. Each disk will be filled until it has \&lt;500gig of free
+level or 500gig. Each disk will be filled until it has &lt;500gig of free
 space remaining. This means no data is stored on disk1 since it already
-has \&lt;500gig of free space. 500gig of data will be stored on disk2 and
+has &lt;500gig of free space. 500gig of data will be stored on disk2 and
 then 500gig of data will be stored on disk3 and finally 500gig of data
 will be stored on disk4.</p><p>Third Pass - The high water level is again reset to one-half of the
-previous level or 250gig. Each disk will be filled until it has \&lt;250gig
+previous level or 250gig. Each disk will be filled until it has &lt;250gig
 of free space remaining. 250gig of data will be stored on disk1 and then
 250gig of data will be stored on disk2 and then 250gig of data will be
 stored on disk3 and finally 250gig of data will be stored on disk4. An
@@ -150,20 +150,17 @@ The recommended setting is 2 times the largest file size you will ever
 transfer. For example, if the largest file you have is 8gig in size then
 set the minimum free space to 16gig. This allows you to transfer files
 that may vary in size somewhat and not accidentally transfer one too
-large. The minimum free space is set in kilo-bytes.</p><p>Here are some examples of the minimum free space setting;</p><hr><p><strong>Free Space</strong> <strong>Value</strong>
-500 meg 500000
-20 gig 20000000
-40 gig 40000000</p><hr><p>Note that unRAID will still place files on the disk if the split level
+large. The minimum free space is set in kilo-bytes.</p><p>Here are some examples of the minimum free space setting;</p><hr><table><thead><tr><th>Free Space</th><th>Value</th></tr></thead><tbody><tr><td>500 meg</td><td>500000</td></tr><tr><td>20 gig</td><td>20000000</td></tr><tr><td>40 gig</td><td>40000000</td></tr></tbody></table><hr><p>Note that unRAID will still place files on the disk if the split level
 does not allow the files to be placed on another disk with more free
 space.</p><p>Also note that Unraid will typically not move a file onto a new disk if
 you&#x27;re over-writing or updating it. For example, a backup file that
 grows in size over time could end up filling a disk and causing a disk
-full error.</p><p>IMPORTANT; There is also a Minkmum Free Space setting for cache pools.
+full error.</p><p><strong>IMPORTANT</strong>: There is also a Minimum Free Space setting for cache pools.
 This is used to determine when a new file for a User Share with the Use
 Cache setting having a value of Yes or Prefer should be written to the
 cache or instead bypass the cache and go directly to the array. This
 needs to be set if you want to avoid filling a cache pool which can
-cause problems. As for this value when used with a User Share hare it
+cause problems. As for this value when used with a User Share it
 should be larger than the largest file you intend to write, and some
 people like to make it significantly larger. You get to this setting by
 clicking on a pool on the Main tab.</p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="split-level">Split level<a href="#split-level" class="hash-link" aria-label="Direct link to Split level" title="Direct link to Split level">​</a></h3><p>The split level setting tells Unraid how many folder levels are allowed
@@ -250,26 +247,25 @@ as long as a disk has space for it.</p><h4 class="anchor anchorWithStickyNavbar_
 level is set to 1. The Share name is New_Movies. Each movie stored in
 this share has its own folder. Inside the movie folder is the movie file
 as well as some metadata files used by MediaBrowser.</p><p><img loading="lazy" src="/assets/images/Movie_Share-0de879d5fb3dc6fba964744db5bb6827.jpg" width="565" height="626" class="img_ev3q"></p><p>The above Windows Explorer screen shot shows the file structure of the
-New_Movies share on the left and the contents of the <code>&lt;u&gt;</code>{=html}A
-History of Violence<code>&lt;/u&gt;</code>{=html} movie folder on the right. The levels
-for this share are labeled on the example. This is what split level = 1
-means:</p><ul><li><p>A New_Movies folder can be created on each disk allowed by the
+New_Movies share on the left and the contents of the A History of
+Violence movie folder on the right. The levels for this share are
+labeled on the example. This is what split level = 1 means:</p><ul><li><p>A New_Movies folder can be created on each disk allowed by the
 include and exclude disk settings. A new New_Movies folder will be
 created on the next disk in line when the allocation method calls
 for Unraid to begin filling the next disk. Note that the New_Movies
 folder will only be created on the next disk in line when it is
-necessary and not when the share is created.</p></li><li><p>The <code>&lt;u&gt;</code>{=html}A History of Violence<code>&lt;/u&gt;</code>{=html} folder can only
+necessary and not when the share is created.</p></li><li><p>The A History of Violence folder can only
 exist on one disk. Once it is created on the disk, all of the
 contents will remain on the same disk. Any changes or additions to
 this folder will remain on the same disk. For example, a new file
 called movie.nfo for the XBMC metadata might be created in this
 folder in the future. The movie.nfo file will be created in the
-existing <code>&lt;u&gt;</code>{=html}A History of Violence<code>&lt;/u&gt;</code>{=html} folder. A
-duplicate <code>&lt;u&gt;</code>{=html}A History of Violence<code>&lt;/u&gt;</code>{=html} folder will
-not be created on another disk to store this new file.</p></li></ul><p>You will notice that the movie folders <code>&lt;u&gt;</code>{=html}500 Days of Summer
-(2009)<code>&lt;/u&gt;</code>{=html} and <code>&lt;u&gt;</code>{=html}2 Fast 2 Furious (2003)<code>&lt;/u&gt;</code>{=html}
-both appear in the New_Movies share. The next screen shot will show how
-each of these files is stored on a separate disk.</p><p><img loading="lazy" src="/assets/images/Movies_Share_Disk_View-93330078b8f073697286d7f11d8cf2fe.JPG" width="1208" height="705" class="img_ev3q"></p><p>The above screen shot shows side by side Window Explorer views of the
+existing A History of Violence folder. A duplicate A History of
+Violence folder will not be created on another disk to store this new
+file.</p></li></ul><p>You will notice that the movie folders (500) Days of Summer (2009) and
+2 Fast 2 Furious (2003) both appear in the New_Movies share. The next
+screen shot will show how each of these files is stored on a separate
+disk.</p><p><img loading="lazy" src="/assets/images/Movies_Share_Disk_View-93330078b8f073697286d7f11d8cf2fe.JPG" width="1208" height="705" class="img_ev3q"></p><p>The above screen shot shows side by side Window Explorer views of the
 file structure stored on disk1 and disk2. On the left is disk1 and on
 the right is disk2. The left Explorer window shows the contents of
 disk1. The New_Movies share is a folder stored at the top level or the
@@ -280,12 +276,11 @@ disk2 with the individual movie folders stored in this directory. As
 files were being moved into the New_Movies share, Unraid created the
 New_Movies folder on both disk1 and disk2 to store these files.</p><p>The windows side by side can be used to examine the contents of the
 New_Movies share on a disk by disk basis. You will notice that the movie
-folder <code>&lt;u&gt;</code>{=html}500 Days of Summer (2009)<code>&lt;/u&gt;</code>{=html} is stored on
-disk1 and the movie folder <code>&lt;u&gt;</code>{=html}2 Fast 2 Furious
-(2003)<code>&lt;/u&gt;</code>{=html} is stored on disk2. As previously noted, Unraid
-combines the movies stored on disk1 and disk2 into one network share
-called New_Movies and both movies appear in the New_Movies network
-share.</p><p>Take note that a share called Movies is also visible on disk2.</p><h5 class="anchor anchorWithStickyNavbar_LWe7" id="split-level-0">Split Level 0<a href="#split-level-0" class="hash-link" aria-label="Direct link to Split Level 0" title="Direct link to Split Level 0">​</a></h5><p>this is what you have if in the GUI you select &quot;Manual: do not
+folder (500) Days of Summer (2009) is stored on disk1 and the movie
+folder 2 Fast 2 Furious (2003) is stored on disk2. As previously noted,
+Unraid combines the movies stored on disk1 and disk2 into one network
+share called New_Movies and both movies appear in the New_Movies network
+share.</p><p>Take note that a share called Movies is also visible on disk2.</p><h5 class="anchor anchorWithStickyNavbar_LWe7" id="split-level-0">Split Level 0<a href="#split-level-0" class="hash-link" aria-label="Direct link to Split Level 0" title="Direct link to Split Level 0">​</a></h5><p>This is what you have if in the GUI you select &quot;Manual: do not
 Automatically split directories&quot;.</p><p>Split level 0 is a special case. Split level 0 requires you to create
 the desired top level or parent folder structure. Unraid will
 unconditionally create an object on the disk that contains the parent
@@ -349,15 +344,15 @@ has often been misunderstood by new users.</p><h4 class="anchor anchorWithSticky
 files and folders will be created in Secondary storage, if configured</p><p>For the Primary storage drop-down:</p><ul><li>this option is mandatory. ie, Primary storage must be selected</li><li>any named pool can be selected</li><li>&quot;Array&quot; can be selected (meaning the Unraid array)</li></ul><h4 class="anchor anchorWithStickyNavbar_LWe7" id="secondary-storage">Secondary Storage<a href="#secondary-storage" class="hash-link" aria-label="Direct link to Secondary Storage" title="Direct link to Secondary Storage">​</a></h4><p>This is the location where files will be moved to if appropriate.</p><p>For the Secondary storage drop-down:</p><ul><li>None: This means that there is no secondary storage set for this
 share i.e Secondary storage is optional</li><li>if Primary storage is a pool name, then the only options are
 &quot;none&quot; and &quot;Array&quot;</li><li>if Primary storage is &quot;Array&quot;, then only &quot;none&quot; appears as an
-option</li><li></li></ul><h3 class="anchor anchorWithStickyNavbar_LWe7" id="unraid-611-and-earlier">Unraid 6.11 and earlier<a href="#unraid-611-and-earlier" class="hash-link" aria-label="Direct link to Unraid 6.11 and earlier" title="Direct link to Unraid 6.11 and earlier">​</a></h3><p>The following settings are only found in Unraid 6.11 and earlier. They
+option</li></ul><h3 class="anchor anchorWithStickyNavbar_LWe7" id="unraid-611-and-earlier">Unraid 6.11 and earlier<a href="#unraid-611-and-earlier" class="hash-link" aria-label="Direct link to Unraid 6.11 and earlier" title="Direct link to Unraid 6.11 and earlier">​</a></h3><p>The following settings are only found in Unraid 6.11 and earlier. They
 achieve the same functionality as the settings available in 6.12 but are
 presented differently.</p><h4 class="anchor anchorWithStickyNavbar_LWe7" id="use-cache-and-mover-behavior-with-user-shares">Use Cache (and Mover Behavior with User Shares)<a href="#use-cache-and-mover-behavior-with-user-shares" class="hash-link" aria-label="Direct link to Use Cache (and Mover Behavior with User Shares)" title="Direct link to Use Cache (and Mover Behavior with User Shares)">​</a></h4><p><strong>Note</strong>: Starting with Unraid 6.9.0 multiple pools can exist and they
 can have any name the user chooses. Any of these pools can act act as a
 cache in the way Unraid uses the term. The word cache therefore is
 referring to this functionality and not necessarily to the pool name.</p><p>Unraid includes an application called <strong>mover</strong> that is used in
-conjunction with User Shares. It&#x27;s behavior controlled by the &quot;Use Cache
-for new files&quot; setting under each User Share. The way these different
-settings operate is as follows</p><ul><li><p><strong>Yes</strong>: Write new files to the cache as long as the free space on
+conjunction with User Shares. It&#x27;s behavior is controlled by the &quot;Use
+Cache for new files&quot; setting under each User Share. The way these
+different settings operate is as follows</p><ul><li><p><strong>Yes</strong>: Write new files to the cache as long as the free space on
 the cache is above the <em>Minimum free space</em> value. If the free space
 is below that then by-pass the cache and write the files directly to
 the main array.</p><p>  When <em>mover</em> runs it will attempt to move files to the main array as
@@ -444,7 +439,7 @@ Share</em> and a <em>User Share</em> can be different views of the <strong>same<
 file. If you mix the share types in the same copy command you can
 end up trying to copy the file to itself which results in the file
 being truncated to zero length and its content thus being lost.</p><p>There is no problem if the copy is between shares of the same type,
-or copying to/from a disk mounted as an Unassigned Device..</p><p>There is another quirk of the interaction between Linux and the Unraid
+or copying to/from a disk mounted as an Unassigned Device.</p><p>There is another quirk of the interaction between Linux and the Unraid
 User Share system that users can encounter if they are working at the
 Disk Share level. The Linux command for Move is implemented by first
 trying a rename on the file (which is fast) and only if that fails does
@@ -458,9 +453,9 @@ to destination so that new files get created following the user share
 settings, then deleting from the source.</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="network-access">Network access<a href="#network-access" class="hash-link" aria-label="Direct link to Network access" title="Direct link to Network access">​</a></h2><p>You can control what protocols should be supported for accessing the
 Unraid server across the network. Click on Settings-<!-- -->&gt;<!-- -->Network Services
 to see the various options available.. These options are:</p><ul><li><strong>SMB</strong>: This the standard protocol used by Windows systems. It is
-widely implemented on other YS.</li><li><strong>NFS</strong>: <strong>N</strong>etwork <strong>F</strong>ile <strong>S</strong>ystem. This is a protocol widely
-used on Unix compatible system.</li><li><strong>AFP</strong>: <strong>A</strong>pple <strong>F</strong>ile <strong>P</strong>rotocol. This is the protocol that
-has historically been used on Apple Mac system. It is now a
+widely implemented on other systems.</li><li><strong>NFS</strong>: <strong>N</strong>etwork <strong>F</strong>ile <strong>S</strong>ystem. This is a protocol widely
+used on Unix compatible systems.</li><li><strong>AFP</strong>: <strong>A</strong>pple <strong>F</strong>ile <strong>P</strong>rotocol. This is the protocol that
+has historically been used on Apple Mac systems. It is now a
 deprecated option as the latest versions of MacOS now use SMB as the
 transferred protocol for accessing files and folders over the
 network.</li><li><strong>FTP</strong>: <strong>F</strong>ile <strong>T</strong>ransfer <strong>P</strong>rotocol.</li></ul><p>When you click on the name of a share on the Shares tab then there is a
@@ -491,7 +486,7 @@ with a specific user fail.</li><li>A workaround that can help with avoiding this
 if you access a server both by it&#x27;s network name and via it&#x27;s IP
 address then Windows will treat it a two separate servers as far as
 authentication is concerned.</li></ul></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="theme-doc-footer-edit-meta-row row"><div class="col"><a href="https://github.com/unraid/docs/tree/main/docs/unraid-os/manual/shares.md" target="_blank" rel="noreferrer noopener" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_vwxv"></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/unraid-os/manual/storage-management"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Storage Management</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/unraid-os/manual/docker-management"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Docker Management</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#user-shares" class="table-of-contents__link toc-highlight">User Shares</a><ul><li><a href="#allocation-method" class="table-of-contents__link toc-highlight">Allocation method</a><ul><li><a href="#high-water" class="table-of-contents__link toc-highlight">High Water</a></li><li><a href="#most-free" class="table-of-contents__link toc-highlight">Most Free</a></li><li><a href="#fill-up" class="table-of-contents__link toc-highlight">Fill-Up</a></li></ul></li><li><a href="#min-free-space" class="table-of-contents__link toc-highlight">Min. Free Space</a></li><li><a href="#split-level" class="table-of-contents__link toc-highlight">Split level</a><ul><li><a href="#disable-split-level" class="table-of-contents__link toc-highlight">Disable Split Level</a></li><li><a href="#split-level--1-example" class="table-of-contents__link toc-highlight">Split Level = 1 Example</a></li></ul></li><li><a href="#included-and-excluded-disks" class="table-of-contents__link toc-highlight">Included and Excluded disk(s)</a><ul><li><a href="#included-disks" class="table-of-contents__link toc-highlight">Included disk(s)</a></li><li><a href="#excluded-disks" class="table-of-contents__link toc-highlight">Excluded disk(s)</a></li></ul></li><li><a href="#default-shares" class="table-of-contents__link toc-highlight">Default Shares</a></li><li><a href="#unraid-612" class="table-of-contents__link toc-highlight">Unraid 6.12</a><ul><li><a href="#primary-storage" class="table-of-contents__link toc-highlight">Primary Storage</a></li><li><a href="#secondary-storage" class="table-of-contents__link toc-highlight">Secondary Storage</a></li></ul></li><li><a href="#unraid-611-and-earlier" class="table-of-contents__link toc-highlight">Unraid 6.11 and earlier</a><ul><li><a href="#use-cache-and-mover-behavior-with-user-shares" class="table-of-contents__link toc-highlight">Use Cache (and Mover Behavior with User Shares)</a></li></ul></li></ul></li><li><a href="#disk-shares" class="table-of-contents__link toc-highlight">Disk Shares</a></li><li><a href="#network-access" class="table-of-contents__link toc-highlight">Network access</a></li><li><a href="#access-permissions" class="table-of-contents__link toc-highlight">Access Permissions</a><ul><li><a href="#windows-gotcha" class="table-of-contents__link toc-highlight">Windows &#39;Gotcha&#39;</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class="footer__title">Documentation</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/">Home</a></li><li class="footer__item"><a href="https://github.com/unraid/docs" target="_blank" rel="noopener noreferrer" class="footer__link-item">Contribute on Github<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div><div class="col footer__col"><div class="footer__title">Community</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://forums.unraid.net" target="_blank" rel="noopener noreferrer" class="footer__link-item">Forums<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://discordapp.com/invite/unraid" target="_blank" rel="noopener noreferrer" class="footer__link-item">Discord<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div><div class="col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://unraid.net" target="_blank" rel="noopener noreferrer" class="footer__link-item">Unraid Home<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://connect.myunraid.net" target="_blank" rel="noopener noreferrer" class="footer__link-item">Unraid Connect<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://newsletter.unraid.net" target="_blank" rel="noopener noreferrer" class="footer__link-item">Newsletter<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://unraid.net/blog" target="_blank" rel="noopener noreferrer" class="footer__link-item">Blog<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="margin-bottom--sm"><img src="/img/un-mark-gradient.svg" alt="Unraid Logo" class="themedImage_ToTc themedImage--light_HNdA footer__logo" width="100"><img src="/img/un-mark-gradient.svg" alt="Unraid Logo" class="themedImage_ToTc themedImage--dark_i4oU footer__logo" width="100"></div><div class="footer__copyright"><small>Copyright &copy; 2005-2023 Lime Technology, Inc.<br>Unraid&reg; is a registered trademark of Lime Technology, Inc.</small></div></div></div></footer></div>
-<script src="/assets/js/runtime~main.9c06c69e.js"></script>
+<script src="/assets/js/runtime~main.ecd44b7a.js"></script>
 <script src="/assets/js/main.1f82de81.js"></script>
 </body>
 </html>

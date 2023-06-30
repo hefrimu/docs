@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-CZENQ1ZPEH"></script>
 <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-CZENQ1ZPEH",{anonymize_ip:!0})</script><link rel="stylesheet" href="/de/assets/css/styles.e986bf59.css">
-<link rel="preload" href="/de/assets/js/runtime~main.1ec322cb.js" as="script">
+<link rel="preload" href="/de/assets/js/runtime~main.e17476ab.js" as="script">
 <link rel="preload" href="/de/assets/js/main.87430f03.js" as="script">
 </head>
 <body class="navigation-with-keyboard" data-theme="light">
@@ -51,7 +51,7 @@ feature on your system, you can do so by adjusting the file system
 for the devices you wish to have encrypted. Click on each disk you
 wish to have encrypted and toggle the filesystem to one of the
 encrypted options. Note, however, that using encryption can
-complicate recovering from certain types of failure so do not juse
+complicate recovering from certain types of failure so do not use
 this feature just because it is available if you have no need for
 it.</p></li></ul><p>Unraid recognizes disks by their serial number (and size). This means
 that it is possible to move drives between SATA ports without having to
@@ -230,7 +230,7 @@ understand your level of protection when various disk replacement
 scenarios occur.</p><p>Data Protection During Disk Replacements</p><hr><p><strong>Replacing a single disk</strong>
 <strong>Replacing two disks</strong></p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="replacing-a-disk-to-increase-capacity">Replacing a disk to increase capacity<a href="#replacing-a-disk-to-increase-capacity" class="hash-link" aria-label="Direkter Link zur Replacing a disk to increase capacity" title="Direkter Link zur Replacing a disk to increase capacity">​</a></h3><p>With modern disks rapidly increasing in capacity you can replace an
 existing data drive with a larger one to increase the available space in
-the array without increasing the total count of drives in the array.</p><p>Point to note are:</p><ul><li>If a disk is showing as unmountable then you should resolve this
+the array without increasing the total count of drives in the array.</p><p>Points to note are:</p><ul><li>If a disk is showing as unmountable then you should resolve this
 before attempting to upgrade the drive as the rebuild process does
 not clear an unmountable status</li><li>If you have single parity then you are not protected against a
 different drive failing during the upgrade process. If this happens
@@ -250,7 +250,7 @@ any reason.</li></ul><p>To perform the upgrade proceed as follows:</p><ul><li>Ru
 that zero errors are reported. Attempting an upgrade if parity is
 not valid will result in the file system on the upgraded disk being
 corrupt.</li><li>Stop the array.</li><li>Unassign the disk you want to upgrade.</li><li>Start the array to commit this change and make Unraid &#x27;forget&#x27; the
-current assignment.<ul><li>Unraid will how tell you that the missing disk is being
+current assignment.<ul><li>Unraid will now tell you that the missing disk is being
 emulated. It does this using the combination of the remaining
 data drives and a parity drive to dynamically reconstruct the
 contents of the emulated drive. From a user perspective the
@@ -258,8 +258,8 @@ system will act as if the drive was still present albeit with a
 reduced level of protection against another drive failing.</li><li>If you started the array in Maintenance mode then this will
 ensure no new files can be written to the drive during the
 upgrade process</li><li>If you started the drive in Normal mode then you will be able to
-read and write to the Emulated drive while the as if it was
-still physically present</li></ul></li><li>Stop the array.<ul><li>At this point the array is in the same state as it would be if
+read and write to the Emulated drive as if it was still physically
+present</li></ul></li><li>Stop the array.<ul><li>At this point the array is in the same state as it would be if
 the drive you have stopped using had failed instead of being
 unassigned as part of the upgrade process.</li></ul></li><li>Assign the (larger) replacement drive to the slot previously used
 for the drive you are upgrading.</li><li>Start the array to begin rebuilding the contents of the emulated
@@ -335,8 +335,8 @@ Maintenance mode is that nothing else can write to the array while
 the rebuild is running which maximises speed. The disadvantage is
 that you cannot use the array in the meantime and until you return
 to normal mode cannot see what the contents of the disk being
-rebuilt will look like.</li><li>Click <strong>Start</strong>.to initiate the rebuild process.and the system will
-reconstruct the contents of the emulated didk(s) onto the new
+rebuilt will look like.</li><li>Click <strong>Start</strong> to initiate the rebuild process.and the system will
+reconstruct the contents of the emulated disk(s) onto the new
 disk(s) and, if the new disk(s) is/are bigger, expand the file
 system.</li></ol><h5 class="anchor anchorWithStickyNavbar_LWe7" id="notes">Notes<a href="#notes" class="hash-link" aria-label="Direkter Link zur Notes" title="Direkter Link zur Notes">​</a></h5><ul><li><strong>IMPORTANT</strong>: If at any point during the replacement process Unraid
 appears to offer an option to format a drive do <strong>not</strong> do so as
@@ -347,7 +347,7 @@ array disks start showing read errors then the rebuilt disk is going
 to show corruption (and probably end up as unmountable) with some
 data loss highly likely.</li><li>You must replace a failed disk with a disk that is as big or bigger
 than the original and not bigger than the smallest parity disk.</li><li>If the replacement disk has been used before then remove any
-existing partitions. It theory this should not be necessary but is
+existing partitions. In theory this should not be necessary but is
 has been known to sometimes cause problems so it is better to play
 safe.</li><li>The rebuild process can never be used to change the format of a
 disk - it can only rebuild to the existing format.</li><li>The rebuild process will not correct a disk that is showing as
@@ -360,7 +360,7 @@ fine. In such a case you need to take a slightly modified process to
 cause Unraid to rebuild a &#x27;disabled&#x27; drive back onto the same drive.</p><ol><li>Stop array</li><li>Unassign disabled disk</li><li>Start array so the missing disk is registered</li><li><strong>Important</strong>: If the drive to be rebuilt is a data drive then check
 that the emulated drive is showing the content you expect to be
 there as the rebuild process simply makes the physical drive match
-the emulated one. Is this is not the case then you may want to ask
+the emulated one. If this is not the case then you may want to ask
 in forums for advice on the best way to proceed.</li><li>Stop array</li><li>Reassign disabled disk</li><li>(optional) Tick the box to start in Maintenance mode. If you start
 the array in Maintenance mode you will need to press the <strong>Sync</strong>
 button to trigger the rebuild. The advantage of doing this in
@@ -368,8 +368,8 @@ Maintenance mode is that nothing else can write to the array while
 the rebuild is running which maximises speed. The disadvantage is
 that you cannot use the array in the meantime and until you return
 to normal mode cannot see what the contents of the disk being
-rebuilt will look like.</li><li>Click <strong>Start</strong>.to initiate the rebuild process.and the system will
-reconstruct the contents of the emulated disk,</li></ol><p>This process can be used for both data and parity drives that have been
+rebuilt will look like.</li><li>Click <strong>Start</strong> to initiate the rebuild process and the system will
+reconstruct the contents of the emulated disk.</li></ol><p>This process can be used for both data and parity drives that have been
 disabled.</p><h4 class="anchor anchorWithStickyNavbar_LWe7" id="parity-swap">Parity Swap<a href="#parity-swap" class="hash-link" aria-label="Direkter Link zur Parity Swap" title="Direkter Link zur Parity Swap">​</a></h4><p>This is a special case of replacing a disabled drive where the
 replacement drive is larger than your current parity drive. This
 procedure applies to both the parity1 and the parity2 drives. If you
@@ -465,8 +465,8 @@ now indicate that it is ready to start a Data-Rebuild._</p></li><li><p>Put a che
 versions: <strong>Yes, I&#x27;m sure</strong>), and click the <strong>Start</strong> button
 _The data drive rebuild begins. Parity is now valid, and the array
 is started.</p><p>Because the array is started, you can use the array as normal, but
-for best performance, we recommend you limit your usage.</p><p>Once again, you can patiently watch the progress, takes a long time
-too! All of the contents of the old data drive are now being
+for best performance, we recommend you limit your usage.</p><p>Once again, you can patiently watch the progress, it takes a long
+time too! All of the contents of the old data drive are now being
 reconstructed on what used to be your parity drive, but is now
 assigned as the replacement data drive._</p></li></ol><p><strong>That&#x27;s it!</strong> Once done, you have an array with a larger parity
 drive and a replaced data drive that may also be larger!</p><p><em>Note: many users like to follow up with a parity check, just to
@@ -565,7 +565,7 @@ Double-check all of the assignments, especially the parity drive(s)!</li><li>Cli
 checked!</li><li>Start the array! Click the Start button then the Proceed button (on
 the warning popup that will pop up)</li><li>(Optional) Start a correcting parity check to ensure parity really
 is valid and you did not make a mistake in the procedure. If
-everything was done correctly this should return zero errors.</li></ol><p>Alternate Procedure steps for Linux proficient users</p><p>If y/u are happy to use the Linux Command line then you can replace
+everything was done correctly this should return zero errors.</li></ol><p>Alternate Procedure steps for Linux proficient users</p><p>If you are happy to use the Linux Command line then you can replace
 steps 7 and 8 by performing the clearing commands yourself at a command
 prompt. (Clearing takes just as long though!) If you would rather do
 that than run the script in steps 7 and 8, then here are the 2 commands
@@ -581,7 +581,7 @@ User-defined intervals under <strong>Settings-<!-- -->&gt;<!-- -->Scheduler</str
 to do this as an automated check on array health so that problems can be
 noticed and fixed before the array can deteriorate beyond repair.
 Typical periods for such automated checks are monthly or quarterly and
-it is recommended that such checks should be <strong>non-correctin</strong>g.</p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="parity-check">Parity check<a href="#parity-check" class="hash-link" aria-label="Direkter Link zur Parity check" title="Direkter Link zur Parity check">​</a></h3><p>If you have at least one parity device assigned, clicking <em>Check</em> which
+it is recommended that such checks should be <strong>non-correcting</strong>.</p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="parity-check">Parity check<a href="#parity-check" class="hash-link" aria-label="Direkter Link zur Parity check" title="Direkter Link zur Parity check">​</a></h3><p>If you have at least one parity device assigned, clicking <em>Check</em>
 will initiate a Parity-check. This will march through all data disks in
 parallel, computing parity and checking it against stored parity on the
 parity disk(s).</p><p>You can continue to use the array while a parity check is running but
@@ -666,7 +666,7 @@ telling you about it unless it changes again.</p><p>You can manually see all the
 clicking on its name on the Main tab in the Unraid GUI.</p><h1>Pool (cache) Operations</h1><p>Prior to Unraid 6.9.0 there was only one pool supported and it was
 always called <strong>cache</strong>. Starting with Unraid 6.9.0 multiple pools are
 supported and the names of these pools are user defined. When multiple
-pools are present then any (or all) of them cal have the functionality
+pools are present then any (or all) of them can have the functionality
 that was available with the cache in earlier Unraid releases.</p><p>If you are running Unraid 6.9.0 or later then any reference you find in
 documentation to cache can be considered as applying to any pool, not
 just one that is actually named cache.</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="why-use-a-pool">Why use a Pool?<a href="#why-use-a-pool" class="hash-link" aria-label="Direkter Link zur Why use a Pool?" title="Direkter Link zur Why use a Pool?">​</a></h2><p>There are several reasons why a user might want to use a pool in Unraid.</p><p>It is worth pointing out that these uses are not mutually exclusive as a
@@ -684,23 +684,23 @@ be mapped to be external to the docker container (typically as a
 container specific subfolder within the appdata share. There are good
 reasons to hold both categories on a Pool for several reasons:</p><ul><li>Writes are much faster than when held on the array as they are not
 slowed down by the way in which UnRaid updates parity for a parity
-protected array</li><li>The working set can be accesssed and updated faster when stored on a
+protected array</li><li>The working set can be accessed and updated faster when stored on a
 Pool.</li><li>It is not necessary to have array disks spun up when a container is
 accessing its binaries or using its working set.</li></ul><h3 class="anchor anchorWithStickyNavbar_LWe7" id="vm-vdisks">VM vdisks<a href="#vm-vdisks" class="hash-link" aria-label="Direkter Link zur VM vdisks" title="Direkter Link zur VM vdisks">​</a></h3><p>Most VM&#x27;s will have one (or more) vdisk files used to emulate a hard
 disk or iso files to emulate a CD-ROM.</p><p>Performance of VMs is much better if such files are on a Pool rather
 than on an array drive.</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="pool-modes">Pool Modes<a href="#pool-modes" class="hash-link" aria-label="Direkter Link zur Pool Modes" title="Direkter Link zur Pool Modes">​</a></h2><p>There are two primary modes of operating a pool in Unraid:</p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="single-device-mode">Single device mode<a href="#single-device-mode" class="hash-link" aria-label="Direkter Link zur Single device mode" title="Direkter Link zur Single device mode">​</a></h3><p>When the number of disk slots for the pool is set to one, this is
 referred to as running in single device mode. In this mode, you will
 have no protection for any data that exists on the pool, which is why
-multi-device mode is recommended. However, unlike in pool mode, while in
-single device mode, you are able to adjust the filesystem for the cache
-device to something other than BTRFS. It is for this reason that there
-are no special operations for single mode. You can only add or remove
-the device from the system.</p><p><em>NOTE: If you choose to use a non-BTRFS file system for your pool device
+multi-device mode is recommended. However, unlike in multi-device mode,
+while in single device mode, you are able to adjust the filesystem for
+the cache device to something other than BTRFS. It is for this reason
+that there are no special operations for single mode. You can only add
+or remove the device from the system.</p><p><em>NOTE: If you choose to use a non-BTRFS file system for your pool device
 operating in single mode, you will not be able to expand to a
 multi-device pool without first reformatting the device with BTRFS. It
 is for this reason that BTRFS is the default filesystem for a pool, even
 when operating in single device mode.</em></p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="multi-device-mode">Multi-Device mode<a href="#multi-device-mode" class="hash-link" aria-label="Direkter Link zur Multi-Device mode" title="Direkter Link zur Multi-Device mode">​</a></h3><p>When more than one disk is assigned to the pool, this is referred to as
-running in multi-device mode. This mode utilizes a BTRFS spicfic
+running in multi-device mode. This mode utilizes a BTRFS specific
 implementation of RAID 1 in order to allow for any number of devices to
 be grouped together in a pool. Unlike a traditional RAID 1, a BTRFS
 RAID1 can mix and match devices of different sizes and speeds and can
@@ -715,7 +715,7 @@ VMs related files on the cache disk, some of these steps are unnecessary
 if there aren&#x27;t.</p><ol><li>Stop all running Dockers/VMs</li><li>Settings -<!-- -->&gt;<!-- --> VM Manager: disable VMs and click apply</li><li>Settings -<!-- -->&gt;<!-- --> Docker: disable Docker and click apply</li><li>Click on Shares and change to &quot;Yes&quot; all User Shares with &quot;Use
 cache disk:&quot; set to &quot;Only&quot; or &quot;Prefer&quot;</li><li>Check that there&#x27;s enough free space on the array and invoke the
 mover by clicking &quot;Move Now&quot; on the Main page</li><li>When the mover finishes check that your pool is empty</li></ol><p>Note that any files on the pool root will not be moved as they
-are not part of any share and will need manual attention</p><p>You. can then later restore files to the pool by effectively reversing
+are not part of any share and will need manual attention</p><p>You can then later restore files to the pool by effectively reversing
 the above steps:</p><ol><li>Click on all shares whose content you want on the pool and set &quot;Use
 cache:&quot; option to &quot;Only&quot; or &quot;Prefer&quot; as appropriate.</li><li>Check that there&#x27;s enough free space on the pool and invoke the
 mover by clicking &quot;Move Now&quot; on the Main page</li><li>When the mover finishes check that your pool now has the expected
@@ -736,11 +736,11 @@ want to accidentally format a device that contains data you want to
 keep.</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="removing-disks-from-a-multi-device-pool">Removing disks from a multi-device pool<a href="#removing-disks-from-a-multi-device-pool" class="hash-link" aria-label="Direkter Link zur Removing disks from a multi-device pool" title="Direkter Link zur Removing disks from a multi-device pool">​</a></h2><p>Notes:</p><ul><li>You can only do this if your pool is configured for redundancy at
 both the data and metadata level.</li><li>You can check what raid level your pool is currently set to by
 clicking on it on the Main tab and scrolling down to the Balance
-Status section.</li><li>You can only remove one drive at a time</li></ul><ol><li>Stop the array</li><li>Unassign a pool drive.</li><li>Start the array</li><li>Click on the pool drive</li><li>if you still have more than one drive in the pool then you can
+Status section.</li><li>You can only remove one drive at a time</li></ul><ol><li>Stop the array</li><li>Unassign a pool drive.</li><li>Start the array</li><li>Click on the pool drive</li><li>If you still have more than one drive in the pool then you can
 simply run a Balance operation</li><li>If you only have one drive left in the pool then switch the pool
 RAID level to single as described below</li></ol><h2 class="anchor anchorWithStickyNavbar_LWe7" id="change-pool-raid-levels">Change Pool RAID Levels<a href="#change-pool-raid-levels" class="hash-link" aria-label="Direkter Link zur Change Pool RAID Levels" title="Direkter Link zur Change Pool RAID Levels">​</a></h2><p>BTRFS can add and remove devices online, and freely convert between RAID
 levels after the file system has been created.</p><p>BTRFS supports raid0, raid1, raid10, raid5, and raid6 (but note that
-raid5/6 are still considered experimental so use with care I.e. make
+raid5/6 are still considered experimental so use with care i.e. make
 sure you have good backups if using these modes), and it can also
 duplicate metadata or data on a single spindle or multiple disks. When
 blocks are read in, checksums are verified. If there are any errors,
@@ -752,8 +752,8 @@ article</a>.</p><p>You can change the BTRFS raid levels for a pool from the Unra
 displayed.</li><li><strong>If using UnRaid 6.8.3 or earlier</strong> then add the appropriate
 additional parameters added to the <em>Options</em> field.</li></ul><p>As an example, the following screenshot shows how you might convert
 the pool from the RAID1 to the SINGLE profile.</p><p><img loading="lazy" src="/de/assets/images/Btrfs-raid1-0f8821a1511642aa3fe12e6e60be1ae3.jpg" width="1158" height="307" class="img_ev3q"></p><ul><li><strong>If using UnRaid 6.9.0 or later</strong> this has been made even easier by
-giving you a drop-down list of the available options so simply
-select the one you want</li><li>Start the Balance operation.</li><li>Wait for the Balance to complete</li><li>The new RAID level will now be fully operational.</li></ul><h2 class="anchor anchorWithStickyNavbar_LWe7" id="replace-a-disk-in-a-pool">Replace a disk in a pool<a href="#replace-a-disk-in-a-pool" class="hash-link" aria-label="Direkter Link zur Replace a disk in a pool" title="Direkter Link zur Replace a disk in a pool">​</a></h2><p><strong>Notes:</strong></p><ul><li>You can only do this if the pool is formatted as BTRFS <strong>AND</strong> it is
+giving you a drop-down list of the available options to simply
+selecting the one you want</li><li>Start the Balance operation.</li><li>Wait for the Balance to complete</li><li>The new RAID level will now be fully operational.</li></ul><h2 class="anchor anchorWithStickyNavbar_LWe7" id="replace-a-disk-in-a-pool">Replace a disk in a pool<a href="#replace-a-disk-in-a-pool" class="hash-link" aria-label="Direkter Link zur Replace a disk in a pool" title="Direkter Link zur Replace a disk in a pool">​</a></h2><p><strong>Notes:</strong></p><ul><li>You can only do this if the pool is formatted as BTRFS <strong>AND</strong> it is
 set up to be redundant.</li><li>You can only replace up to one disk at a time from a pool.</li></ul><p>To replace a disk in the redundant pool, perform the following steps:</p><ol><li>Stop the array.</li><li>Physically detach the disk from your system you wish to remove.</li><li>Attach the replacement disk (must be equal to or larger than the
 disk being replaced).</li><li>Refresh the Unraid webGui when under the <strong>Main</strong> tab.</li><li>Select the pool slot that previously was set to the old disk and
 assign the new disk to the slot.</li><li>Start the array.</li><li>If presented with an option to <strong>Format</strong> the device, click the
@@ -772,7 +772,7 @@ disable those services before start or Unraid will recreate the
 images somewhere else, assuming they are using /mnt/user paths)</p><ul><li>Stop array (re-enable docker/VM services if disabled above)</li><li>Re-assign all pool member except the removed device</li><li>Start array</li></ul><p>Done</p><p>You can also remove multiple devices with a single command (as long as
 the above rule is observed):</p><p><code>btrfs dev del /dev/mapper/sdX1 /dev/mapper/sdY1 /mnt/cache</code></p><p>but in practice this does the same as removing one device, then the
 other, as they are still removed one at a time, just one after the other
-with n/ further input from you.</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="minimum-free-space-for-a-pool">Minimum Free Space for a Pool<a href="#minimum-free-space-for-a-pool" class="hash-link" aria-label="Direkter Link zur Minimum Free Space for a Pool" title="Direkter Link zur Minimum Free Space for a Pool">​</a></h2><p>This setting is used to help avoid the issue of a pool that is being
+with no further input from you.</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="minimum-free-space-for-a-pool">Minimum Free Space for a Pool<a href="#minimum-free-space-for-a-pool" class="hash-link" aria-label="Direkter Link zur Minimum Free Space for a Pool" title="Direkter Link zur Minimum Free Space for a Pool">​</a></h2><p>This setting is used to help avoid the issue of a pool that is being
 used for a User Share running out of free space and this then causing
 errors to occur. The Minimum Free Space setting for a pool tells Unraid
 when to stop putting new files onto the pool for User Shares that have a
@@ -787,7 +787,7 @@ larger than the biggest file you intend to be cached on the pool. In
 many ways it is analogous to the setting of the same name for User
 Shares but it applies to the pool rather than the array disks. It is
 ignored for User Shares which have a <em>Use Cache</em> setting of <strong>Only</strong>,
-and is not relevant if the setting is <strong>No</strong>.</p><p>For U<strong>nraid 6.8.3</strong> (and earlier) which only supported a single pool
+and is not relevant if the setting is <strong>No</strong>.</p><p>For <strong>Unraid 6.8.3</strong> (and earlier) which only supported a single pool
 (that was always called cache) this setting can be found under
 <em>Settings-<!-- -->&gt;<!-- -->Global Share Settings</em>.</p><p>For <strong>Unraid 6.9.0</strong> (and later) which supports multiple pools (with the
 names being user defined) this setting can be found by clicking on the
@@ -848,7 +848,7 @@ with exactly the same data.  However, <strong>this is not the case</strong>. In
 when Unraid OS sees that a btrfs device has been removed from an
 existing multi-device pool, upon array Start it will do a <code>wipefs</code> on
 that device so that upon mount it will not be included in the old pool.
-This of course effectively deletes all the data on the moved device.</p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="moving-files-between-pools">Moving files between pools<a href="#moving-files-between-pools" class="hash-link" aria-label="Direkter Link zur Moving files between pools" title="Direkter Link zur Moving files between pools">​</a></h3><p>there is no built-in support for moving files between pools. In the
+This of course effectively deletes all the data on the moved device.</p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="moving-files-between-pools">Moving files between pools<a href="#moving-files-between-pools" class="hash-link" aria-label="Direkter Link zur Moving files between pools" title="Direkter Link zur Moving files between pools">​</a></h3><p>There is no built-in support for moving files between pools. In the
 event one wants to do this you can do it using the <strong>mover</strong> application
 using the techniques mentioned during earlier by doing it in two steps</p><ul><li>Move the files from pool1 to the main array</li><li>move the files from the array to pool2</li></ul><p>The alternative is to it manually in which case you can move files
 directly between the pools.</p><p><strong>Do not forget that if any the files belong to a Docker container
@@ -868,7 +868,7 @@ Normally each drive would be of the same size, but if not then
 only the amount of space equivalent to that on the smallest
 drive will be used.</li><li>In multi-drive mode various levels of RAID can be supported. The
 default in Unraid for a cache pool is RAID1 so that data is
-stored redundantly to protect against drive failure.</li><li>is an option supported when using a cache pool spanning multiple
+stored redundantly to protect against drive failure.</li><li>It is an option supported when using a cache pool spanning multiple
 drives that need to run as a single logical drive as this needs
 the multi-drive support.</li><li>In multi-drive mode in the cache pool the usable space is always
 a multiple of the smallest drive (if they are not the same
@@ -888,7 +888,7 @@ sizes.</li><li>In multi-drive mode various levels of RAID can be supported
 (although these are a BTRFS specific implementation and not
 necessarily what one expects). The default in Unraid for a cache
 pool is RAID1 so that data is stored redundantly to protect
-against drive failure.</li><li>is the an option supported when using a cache pool spanning
+against drive failure.</li><li>It is an option supported when using a cache pool spanning
 multiple drives that need to run as a single logical drive as
 this needs the multi-drive support.</li><li>In multi-drive mode in the cache pool the available space is
 always a multiple of the smallest drive size.</li></ul></li><li><p><strong>ReiserFS</strong>: This is supported for legacy reasons for those
@@ -896,14 +896,14 @@ migrating from earlier versions of Unraid where it was the only
 supported file system type.</p><ul><li>There is only minimal involvement from Linux kernel developers
 on maintaining the ReiserFS drivers on new Linux kernel versions
 so the chance of a new kernel causing problems with ReiserFS is
-higher than for other Linux fine system types.</li><li><strong>It has a hard limit of 16TB on a ReiserFS file system and
+higher than for other Linux file system types.</li><li><strong>It has a hard limit of 16TB on a ReiserFS file system and
 commercial grade hard drives have now reached this limit.</strong></li><li>Write performance can degrade significantly as the file system
 starts getting full.</li><li>It is extremely good at recovering from even extreme levels of
 file system corruption</li><li><strong>It is now deprecated for use with Unraid and should not be
 used by new users.</strong> Support for ReiserFS is due to be removed
 from the Linux kernel by 2025 and at that point Unraid will also
-likely stop supporting ReiserFS so existing should be looking to
-move off using ReiserFS in their Unraid system.</li></ul></li></ul><p>These formats are standard Linux formats and as such any array drive can
+likely stop supporting ReiserFS so existing users should be looking
+to move off using ReiserFS in their Unraid system.</li></ul></li></ul><p>These formats are standard Linux formats and as such any array drive can
 easily be removed from the array and read on any Linux system. This can
 be very useful in any data recovery scenario. Note, however, that the
 initial format needs to be done on the Unraid system as Unraid has
@@ -913,13 +913,13 @@ Unfortunately, these formats cannot be read as easily on Windows or
 macOS systems as these OS do not recognize the file system formats
 without additional software being installed that is not freely
 obtainable.</p><p>A user can use a mixture of these file system types in their Unraid
-system without it causing any specific issues. in particular, the Unraid
+system without it causing any specific issues. In particular, the Unraid
 parity system is file system agnostic as it works at the physical sector
 level and is not even aware of the file system that is in use on any
 particular drive.</p><p>In addition drives can be
 <a href="/de/unraid-os/manual/security#data-encryption">encrypted</a>. <strong><em>A point to
 note about using encryption is that if you get any sort of file system
-corruption then encryption can make it harder (and sometimes impossible0
+corruption then encryption can make it harder (and sometimes impossible
 to recover data on the corrupted file system.</em></strong></p><p>If using a cache pool (i.e multiple drives) then the supported types are
 BTRFS or ZFS and the pool is formatted as a single entity. By default,
 this will be a version of RAID1 to give redundancy, but other options
@@ -961,7 +961,7 @@ occur at other times as well.</p></li></ul><p><strong>Note:</strong> If a disk i
 (has a red &#x27;x&#x27; against in in the GUI) then the check/repair
 process can be carried out on the disk that is being &#x27;emulated&#x27; by
 Unraid prior to carrying out any rebuild process. It is always worth
-doing the repair before any rebuild as If a disk is showing as
+doing the repair before any rebuild as if a disk is showing as
 <strong>unmountable</strong> while being emulated then it will also show as
 <strong>unmountable</strong> after the rebuild (as all the rebuild process does
 is make the physical disk match the emulated one). The process for
@@ -1022,7 +1022,7 @@ you want to test or repair. For example, if the drive of concern is
 Disk 5, then click on <strong>Disk 5</strong>. If it&#x27;s the Cache drive, then
 click on <strong>Cache</strong>. If in Maintenance mode then The disks will not
 be mounted but the underlying <em>/dev/mdX</em> type devices that
-correspond to each <em>diskX</em> in the unRaid GUI will have been created.
+correspond to each <em>diskX</em> in the Unraid GUI will have been created.
 This is important as any write operation against one of these &#x27;md&#x27;
 type devices will also update parity to reflect that write has
 happened.</li><li>You should see a page of options for that drive, beginning with
@@ -1038,8 +1038,8 @@ the underlying drive is not actually changed. For more help, click
 the <strong>Help</strong> button in the upper right.</li><li>Click on the Check button to run the file system check</li><li>Information on the check progress is now displayed. You may need to
 use the <em>Refresh</em> button to get it to update.</li><li>If you are not sure what the results of the check mean you should
 copy the progress information so you can ask a question in the
-forum. When including this information as part of a forum post use
-the mark them as <em>code</em> (using the <strong>\&lt;?<!-- -->&gt;</strong> icon) to preserve the
+forum. When including this information as part of a forum post
+mark them as <em>code</em> (using the <strong>\&lt;?<!-- -->&gt;</strong> icon) to preserve the
 formatting as otherwise it becomes difficult to read.</li></ol><h3 class="anchor anchorWithStickyNavbar_LWe7" id="running-the-test-using-the-command-line">Running the Test using the command line<a href="#running-the-test-using-the-command-line" class="hash-link" aria-label="Direkter Link zur Running the Test using the command line" title="Direkter Link zur Running the Test using the command line">​</a></h3><h4 class="anchor anchorWithStickyNavbar_LWe7" id="xfs-and-reiserfs">XFS and ReiserFS<a href="#xfs-and-reiserfs" class="hash-link" aria-label="Direkter Link zur XFS and ReiserFS" title="Direkter Link zur XFS and ReiserFS">​</a></h4><p>You can run the file system check from the command line for ReiserFS and
 XFSxfs as shown below if the array is started in Maintenance mode by
 using a command of the form:</p><p><code>xfs_repair -v /dev/mdX</code></p><p>or</p><p><code>reiserfsck -v /dev/mdX</code></p><p>where X corresponds to the diskX number shown in the Unraid GUI. Using
@@ -1064,7 +1064,7 @@ using the <strong>scrub</strong> command that is covered in more detail in the
 shown below if the array is started in Maintenance mode by using
 commands of the form:</p><p><code>btrfs check --readonly /dev/mdX1</code></p><p>where X corresponds to the diskX number shown in the Unraid GUI. Using
 the /dev/mdX type device will maintain parity. If the file system to be
-repaired as an encrypted XFS one then the command needs to be modified
+repaired is an encrypted XFS one then the command needs to be modified
 to use the /dev/mapper/mdX device.</p><p>If you ever need to run a check on a drive that is not part of the
 array, if the array is not started, or the disk is part of a pool then
 you need to run the appropriate command from a console/terminal session.
@@ -1080,13 +1080,13 @@ circumstances.</li></ul><h4 class="anchor anchorWithStickyNavbar_LWe7" id="zfs">
 released with ZFS support included as a standard feature.</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="repairing-a-file-system">Repairing a File System<a href="#repairing-a-file-system" class="hash-link" aria-label="Direkter Link zur Repairing a File System" title="Direkter Link zur Repairing a File System">​</a></h2><p>You typically run this just after running a check as outlined above, but
 if skipping that follow steps 1-4 to get to the point of being ready to
 run the repair. It is a good idea to enable the Help built into the GUI
-to get more information on this process.</p><p>If the drive is marked as disable and being emulated then the repair is
+to get more information on this process.</p><p>If the drive is marked as disabled and being emulated then the repair is
 run against the emulated drive and not the physical drive. It is
 frequently done before attempting to rebuild a drive as it is the
 contents of the emulated drive that is used by the rebuild process.</p><ol><li>Remove any parameters from the <em>Options</em> field that would cause the
 tool to run in <em>check-only</em> mode.</li><li>Add any additional parameters to the <em>Options</em> field required that
 are suggested from the check phase. If not sure then ask in the
-forum.<ul><li>The Help build into the GUI can provide guidance on what options
+forum.<ul><li>The Help built into the GUI can provide guidance on what options
 might be applicable.</li></ul></li><li>Press the Check button to start the repair process. You can now
 periodically use the <em>Refresh</em> button to update the progress
 information</li><li>If the repair does not complete for any reason then ask in the forum
@@ -1134,12 +1134,12 @@ show as <em>Not available</em>. The <em>Options</em> field may include a paramet
 that causes the selected tool to run in <em>check-only</em> mode so that
 the underlying drive is not actually changed. For more help, click
 the <strong>Help</strong> button in the upper right.</li><li>Click on the Check button to run the file system check</li><li>Information on the check progress is now displayed. You may need to
-use the <em>Refresh</em> button to get it to update.</li><li>If you are not sure what the results of the check mean you should
+use the <em>Refresh</em> button to get it to update.</li><li>If you are not sure what the results of the check means you should
 copy the progress information so you can ask a question in the
-forum. When including this information as part of a forum post use
-the mark them as <em>code</em> (using the <strong>\&lt;?<!-- -->&gt;</strong> icon) to preserve the
-formatting as otherwise it becomes difficult to read.</li></ol><h4 class="anchor anchorWithStickyNavbar_LWe7" id="btrfs-1">BTRFS<a href="#btrfs-1" class="hash-link" aria-label="Direkter Link zur BTRFS" title="Direkter Link zur BTRFS">​</a></h4><p>A lot of the time running the Scrub operation will be able to detect and
-(correct if you have a redundant pool) many errors.</p><p>In the event that you need more than this you need the array to be
+forum. When including this information as part of a forum post
+mark them as <em>code</em> (using the <strong>\&lt;?<!-- -->&gt;</strong> icon) to preserve the
+formatting as otherwise it becomes difficult to read.</li></ol><h4 class="anchor anchorWithStickyNavbar_LWe7" id="btrfs-1">BTRFS<a href="#btrfs-1" class="hash-link" aria-label="Direkter Link zur BTRFS" title="Direkter Link zur BTRFS">​</a></h4><p>A lot of the time running the Scrub operation will be able to detect
+(and correct if you have a redundant pool) many errors.</p><p>In the event that you need more than this you need the array to be
 started in Maintenance mode and then the <strong>Check</strong> option can be used to
 run the <em>btrfs check</em> program to check file system integrity on the
 device.</p><p>The <em>Options</em> field is initialized with <em>-<!-- -->-readonly</em> which specifies
@@ -1157,10 +1157,10 @@ device on the Main page</p><p>There is another tool, named <code>btrfs-restore</
 recover files from an unmountable filesystem, without modifying the
 broken filesystem itself (i.e., non-destructively) but that is not
 supported by the Unraid GUI.</p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="running-the-repair-using-the-command-line">Running the Repair using the command line<a href="#running-the-repair-using-the-command-line" class="hash-link" aria-label="Direkter Link zur Running the Repair using the command line" title="Direkter Link zur Running the Repair using the command line">​</a></h3><h4 class="anchor anchorWithStickyNavbar_LWe7" id="xfs-and-reiserfs-2">XFS and ReiserFS<a href="#xfs-and-reiserfs-2" class="hash-link" aria-label="Direkter Link zur XFS and ReiserFS" title="Direkter Link zur XFS and ReiserFS">​</a></h4><p>You can run the file system check from the command line for ReiserFS and
-XFSxfs as shown below if the array is started in Maintenance mode by
+XFS as shown below if the array is started in Maintenance mode by
 using a command of the form:</p><p><code>xfs_repair /dev/mdX</code></p><p>or</p><p><code>reiserfsck /dev/mdX</code></p><p>where X corresponds to the diskX number shown in the Unraid GUI. Using
 the /dev/mdX type device will maintain parity. If the file system to be
-repaired as an encrypted XFS one then the command needs to be modified
+repaired is an encrypted XFS one then the command needs to be modified
 to use the /dev/mapper/mdX device</p><p>If you ever need to run a check on a drive that is not part of the array
 or if the array is not started then you need to run the appropriate
 command from a console/terminal session. As an example for an XFS disk
@@ -1201,7 +1201,7 @@ switch the drive to using either XFS or BTRFS file system instead.
 However, there may be users who want to convert between file system
 types for other reasons.</p><p>In simplistic terms the process is:</p><ol><li>Copy the data off the drive in question to another location. This
 can be elsewhere on the array or anywhere else suitable.<ul><li>You do have to have enough free space to temporarily hold this
-data</li><li>Many uses do such a conversion just after adding a new drive to
+data</li><li>Many users do such a conversion just after adding a new drive to
 the array as this gives them the free space required.</li></ul></li><li>Follow the procedure above for changing the file system type of the
 drive. This will leave you with an empty drive that is now in the
 correct format but that has no files on it.</li><li>Copy the files you saved in step 1 back to this drive</li><li>If you have multiple drives that need to be converted then do them
@@ -1217,8 +1217,8 @@ the type back to the one you started with.</p><p>This process will only take a f
 updated accordingly.</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="reformatting-a-cache-drive">Reformatting a cache drive<a href="#reformatting-a-cache-drive" class="hash-link" aria-label="Direkter Link zur Reformatting a cache drive" title="Direkter Link zur Reformatting a cache drive">​</a></h2><p>There may be times when you want to change the format used on the cache
 drive (or some similar operation) and preserve as much of its existing
 contents as possible. In such cases the recommended way to proceed that
-is least like;y to go wrong is:</p><ol><li>Stop array.</li><li>Disable docker and VM services under Settings</li><li>Start array. If you have correctly disabled these services there
-will be NO Docker or VMstab in the GUI.</li><li>Set all shares that have files on the cache and are currently not
+is least likely to go wrong is:</p><ol><li>Stop array.</li><li>Disable docker and VM services under Settings</li><li>Start array. If you have correctly disabled these services there
+will be NO Docker or VMstab in the GUI.</li><li>Set all shares that have files on the cache and currently don&#x27;t
 have a Use Cache:Yes to BE Cache:Yes. Make a note of which shares
 you changed and what setting they had before the change</li><li>Run mover from the Main tab; wait for completion (which can take
 some time to complete if there are a lot of files); check cache
@@ -1231,8 +1231,7 @@ unformatted. Select the checkbox saying you are sure, and format the
 drive.</li><li>Set any shares that you changed to be Cache: Yes earlier to Cache:
 Prefer if they were originally Cache: Only or Cache: Prefer. If any
 were Cache: No, set them back that way.</li><li>Run mover from the Main tab; wait for completion; check cache drive
-contents which should be back the way it was.</li><li>change any share that we&#x27;re set to Use Cache:Only back to that
-option</li><li>Stop array.</li><li>Enable docker and VM services.</li><li>Start array</li></ol><p>There are other alternative procedures that might be faster if you are
+contents which should be back the way it was.</li><li>Change any share that was set to Use Cache:Only back to that option</li><li>Stop array.</li><li>Enable docker and VM services.</li><li>Start array</li></ol><p>There are other alternative procedures that might be faster if you are
 Linux aware, but the one shown above is the one that has proved most
 likely to succeed without error for the average Unraid user.</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="btrfs-operations">BTRFS Operations<a href="#btrfs-operations" class="hash-link" aria-label="Direkter Link zur BTRFS Operations" title="Direkter Link zur BTRFS Operations">​</a></h2><p>If you want more information BTRFS then the
 <!-- -->[./&lt;Https://en.wikipedia.org/wiki/Btrfs&gt; Wikipedia BTRFS article]<!-- --> is a
@@ -1261,7 +1260,7 @@ new chunks. If you again run btrfs fi df after you run the balance, you
 should see that the Total and Used values are much closer to each other,
 since balance deleted chunks that weren&#x27;t needed anymore.</p><p>The BTRFS balance operation can be run from the Unraid GUI by clicking
 on the drive on the Main tab and running scrub from the resulting
-dialog. the current status information for the volume is displayed. You
+dialog. The current status information for the volume is displayed. You
 can optionally add parameters to be passed to the balance operation and
 then start the scrub by pressing the Balance button.</p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="scrub">Scrub<a href="#scrub" class="hash-link" aria-label="Direkter Link zur Scrub" title="Direkter Link zur Scrub">​</a></h3><p>Scrubbing involves reading all the data from all the disks and verifying
 checksums. If any values are not correct and you have a redundant BTRFS
@@ -1286,15 +1285,15 @@ plugins via the <strong>Apps</strong> tab if you want to use Unassigned Drives o
 your system. There are 2 plugins available:</p><ol><li>The basic <strong>Unassigned Devices</strong> plugin provides support for file
 system types supported as standard in Unraid.</li><li>The <strong>Unassigned Devices Plus</strong> plugin extends the file system
 support to include options such as ExFat ant HFS+.</li></ol><p>You should look at the Unassigned Devices support
-<!-- -->[&lt;https://forums.unraid.net/topic/92462-unassigned-devices-managing-disk-drives-and-remote-shares-outside-of-the-unraid-array/&gt;<!-- -->|<!-- -->
-thread]<!-- --> for these plugins to get more information the very extensive
-facilities offered and guidance on how to use them.</p><h1>Performance</h1><h2 class="anchor anchorWithStickyNavbar_LWe7" id="array-write-modes">Array Write Modes<a href="#array-write-modes" class="hash-link" aria-label="Direkter Link zur Array Write Modes" title="Direkter Link zur Array Write Modes">​</a></h2><p>Unraid maintains real-time parity and the performance of writing to the
+<a href="https://forums.unraid.net/topic/92462-unassigned-devices-managing-disk-drives-and-remote-shares-outside-of-the-unraid-array/" target="_blank" rel="noopener noreferrer">thread</a>
+for these plugins to get more information about the very
+extensive facilities offered and guidance on how to use them.</p><h1>Performance</h1><h2 class="anchor anchorWithStickyNavbar_LWe7" id="array-write-modes">Array Write Modes<a href="#array-write-modes" class="hash-link" aria-label="Direkter Link zur Array Write Modes" title="Direkter Link zur Array Write Modes">​</a></h2><p>Unraid maintains real-time parity and the performance of writing to the
 parity protected array in Unraid is strongly affected by the method that
 is used to update parity.</p><p>There are fundamentally 2 methods supported:</p><ul><li>Read/Modify/Write</li><li>Turbo Mode (also known as <em>reconstruct write</em>)</li></ul><p>These are discussed in more detail below to help users decide which
 modes are appropriate to how they currently want their array to operate.</p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="setting-the-write-mode">Setting the Write mode<a href="#setting-the-write-mode" class="hash-link" aria-label="Direkter Link zur Setting the Write mode" title="Direkter Link zur Setting the Write mode">​</a></h3><p>The write mode is set by going <em>Settings-<!-- -->&gt;<!-- -->Disk Settings</em>, and look for
 the <strong>Tunable (md_write_method</strong>) setting. The 3 options are:</p><ul><li><strong>Auto</strong>: Currently this operates just like setting the
 read/modify/write option but is reserved for future enhancement</li><li><strong>read/modify/write</strong></li><li><strong>reconstruct write</strong> (a.k.a.Turbo write)</li></ul><p>To change it, click on the option you want, then the Apply button. The
-effect should be immediate to you can change it at any time</p><p>The different modes and their implications are discussed in more detail
+effect should be immediate so you can change it at any time</p><p>The different modes and their implications are discussed in more detail
 below</p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="readmodifywrite-mode">Read/Modify/Write mode<a href="#readmodifywrite-mode" class="hash-link" aria-label="Direkter Link zur Read/Modify/Write mode" title="Direkter Link zur Read/Modify/Write mode">​</a></h3><p>Historically, Unraid has used the &quot;read/modify/write&quot; method to update
 parity and to keep parity correct for all data drives.</p><p>Say you have a block of data to write to a drive in your array, and
 naturally you want parity to be updated too. In order to know how to
@@ -1360,7 +1359,7 @@ of the drives are currently spinning. If the drives are all spinning,
 then it slips into Turbo. This should be enough for many users. It would
 normally use the old method, but if you planned a large transfer or a
 bunch of writes, then you would spin up all of the drives - and enjoy
-faster writing.</p><p>The auto method has been for the potential of the system automatically
+faster writing.</p><p>The auto method has the potential of the system automatically
 switching modes depending on current array activity but this has not
 happened so far. The problem is knowing when a drive is spinning, and
 being able to detect it without noticeably affecting write performance,
@@ -1377,12 +1376,12 @@ speed of writing to the array. This can be done on a share-by-share
 basis using the Use Cache setting available for each share by clicking
 on the share name on the Shares tab in the GUI. It is important to
 realize that using the cache has not really sped up writing files to the
-array - it has just that such writes now occur when the user is not
+array - it is just that such writes now occur when the user is not
 watching them</p><p>Points to note are:</p><ul><li>The <strong>Yes</strong> setting for <em>Use Cache</em> causes new files for the share
 to initially be written to the cache and later moved to the parity
 protected array when <em>mover</em> runs.</li><li>Writes to the cache run at the full speed the cache is capable of.</li><li>It is not uncommon to use SSDs in the cache to get maximum
 performance.</li><li>Moves from cache to array are still comparatively slow but since
-mover is normally scheduled to fun when the system is otherwise idle
+mover is normally scheduled to run when the system is otherwise idle
 this is not visible to the end-user.</li><li>There is a <strong>Minimum Free Space</strong> setting under <em>Settings-<!-- -->&gt;<!-- -->Global
 Share settings</em> and if the free space on the cache falls below this
 value Unraid will stop trying to write new files to the cache. Since
@@ -1390,7 +1389,7 @@ when Unraid first creates a file it does not know the final size it
 is recommended that the value for this setting should be as large
 (or larger) as the biggest file you expect to write to the share as
 you want to stop Unraid selecting the cache for a file that will not
-fit in the space available. this will stop the write failing with an
+fit in the space available. This will stop the write failing with an
 &#x27;out of space&#x27; error when the free space gets exhausted.</li><li>If there is not sufficient free space on the cache then writes will
 start by-passing the cache and revert to the speeds that would be
 obtained when not using the cache.</li></ul><h2 class="anchor anchorWithStickyNavbar_LWe7" id="read-modes">Read Modes<a href="#read-modes" class="hash-link" aria-label="Direkter Link zur Read Modes" title="Direkter Link zur Read Modes">​</a></h2><p>Normally read performance is determined by the maximum speed that a file
@@ -1411,7 +1410,7 @@ using the BTRFS file system.</p><p>BTRFS supports a variety of RAID profiles and
 like a traditional RAID system giving much higher throughput than the
 main Unraid array.</p><p>Recovery after drive failure tends to be harder and more prone to lead
 to data loss which is one disadvantage of using pools for everything.</p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="theme-doc-footer-edit-meta-row row"><div class="col"><a href="https://github.com/unraid/docs/tree/main/docs/unraid-os/manual/storage-management.md" target="_blank" rel="noreferrer noopener" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Diese Seite bearbeiten</a></div><div class="col lastUpdated_vwxv"></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Dokumentation Seiten"><a class="pagination-nav__link pagination-nav__link--prev" href="/de/unraid-os/manual/getting-started"><div class="pagination-nav__sublabel">Zurück</div><div class="pagination-nav__label">Getting Started</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/de/unraid-os/manual/shares"><div class="pagination-nav__sublabel">Weiter</div><div class="pagination-nav__label">Shares</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#help-i-cant-start-my-array" class="table-of-contents__link toc-highlight">Help! I can&#39;t start my array!</a><ul><li><a href="#too-many-disks-missing-from-the-array" class="table-of-contents__link toc-highlight">Too many disks missing from the array</a></li><li><a href="#too-many-attached-devices" class="table-of-contents__link toc-highlight">Too many attached devices</a><ul><li><a href="#trial" class="table-of-contents__link toc-highlight">Trial</a></li></ul></li><li><a href="#invalid-or-missing-key" class="table-of-contents__link toc-highlight">Invalid or missing key</a><ul><li><a href="#missing-key" class="table-of-contents__link toc-highlight">Missing key</a></li><li><a href="#expired-trial" class="table-of-contents__link toc-highlight">Expired trial</a></li><li><a href="#blacklisted-usb-flash-device" class="table-of-contents__link toc-highlight">Blacklisted USB flash device</a></li></ul></li><li><a href="#cannot-contact-key-server" class="table-of-contents__link toc-highlight">Cannot contact key-server</a></li><li><a href="#this-unraid-server-os-release-has-been-withdrawn" class="table-of-contents__link toc-highlight">This Unraid Server OS release has been withdrawn</a></li></ul></li><li><a href="#adding-disks" class="table-of-contents__link toc-highlight">Adding disks</a><ul><li><a href="#configuring-disks" class="table-of-contents__link toc-highlight">Configuring Disks</a></li><li><a href="#clear-v-pre-clear" class="table-of-contents__link toc-highlight">Clear v Pre-Clear</a></li><li><a href="#data-disks" class="table-of-contents__link toc-highlight">Data Disks</a></li><li><a href="#parity-disks" class="table-of-contents__link toc-highlight">Parity Disks</a></li><li><a href="#upgrading-parity-disks" class="table-of-contents__link toc-highlight">Upgrading parity disk(s)</a></li></ul></li><li><a href="#replacing-disks" class="table-of-contents__link toc-highlight">Replacing disks</a><ul><li><a href="#replacing-a-disk-to-increase-capacity" class="table-of-contents__link toc-highlight">Replacing a disk to increase capacity</a></li><li><a href="#replacing-faileddisabled-disks" class="table-of-contents__link toc-highlight">Replacing failed/disabled disk(s)</a><ul><li><a href="#array-tolerance-to-disk-failure-events" class="table-of-contents__link toc-highlight">Array Tolerance to Disk Failure Events</a></li><li><a href="#what-is-a-failed-disabled-drive" class="table-of-contents__link toc-highlight">What is a &#39;failed&#39; (disabled) drive</a></li><li><a href="#normal-replacement" class="table-of-contents__link toc-highlight">Normal replacement</a></li><li><a href="#rebuilding-a-drive-onto-itself" class="table-of-contents__link toc-highlight">Rebuilding a drive onto itself</a></li><li><a href="#parity-swap" class="table-of-contents__link toc-highlight">Parity Swap</a></li></ul></li><li><a href="#a-disk-failed-while-i-was-rebuilding-another" class="table-of-contents__link toc-highlight">A disk failed while I was rebuilding another</a></li></ul></li><li><a href="#removing-disks" class="table-of-contents__link toc-highlight">Removing disks</a><ul><li><a href="#removing-parity-disks" class="table-of-contents__link toc-highlight">Removing parity disk(s)</a></li><li><a href="#removing-data-disks" class="table-of-contents__link toc-highlight">Removing data disk(s)</a></li><li><a href="#alternative-method" class="table-of-contents__link toc-highlight">Alternative method</a></li><li><a href="#notes-1" class="table-of-contents__link toc-highlight">Notes</a></li></ul></li><li><a href="#checking-array-devices" class="table-of-contents__link toc-highlight">Checking array devices</a><ul><li><a href="#parity-check" class="table-of-contents__link toc-highlight">Parity check</a></li><li><a href="#read-check" class="table-of-contents__link toc-highlight">Read check</a></li><li><a href="#check-history" class="table-of-contents__link toc-highlight">Check history</a></li></ul></li><li><a href="#spin-up-and-down-disks" class="table-of-contents__link toc-highlight">Spin up and down disks</a></li><li><a href="#reset-the-array-configuration" class="table-of-contents__link toc-highlight">Reset the array configuration</a></li><li><a href="#notifications" class="table-of-contents__link toc-highlight">Notifications</a><ul><li><a href="#status-reports" class="table-of-contents__link toc-highlight">Status Reports</a></li></ul></li><li><a href="#smart-monitoring" class="table-of-contents__link toc-highlight">SMART Monitoring</a></li><li><a href="#why-use-a-pool" class="table-of-contents__link toc-highlight">Why use a Pool?</a><ul><li><a href="#cache" class="table-of-contents__link toc-highlight">Cache</a></li><li><a href="#docker-application-storage" class="table-of-contents__link toc-highlight">Docker application Storage</a></li><li><a href="#vm-vdisks" class="table-of-contents__link toc-highlight">VM vdisks</a></li></ul></li><li><a href="#pool-modes" class="table-of-contents__link toc-highlight">Pool Modes</a><ul><li><a href="#single-device-mode" class="table-of-contents__link toc-highlight">Single device mode</a></li><li><a href="#multi-device-mode" class="table-of-contents__link toc-highlight">Multi-Device mode</a></li></ul></li><li><a href="#backing-up-the-pool-to-the-array" class="table-of-contents__link toc-highlight">Backing up the pool to the array</a></li><li><a href="#switching-the-pool-to-multi-device-mode" class="table-of-contents__link toc-highlight">Switching the pool to multi-device mode</a></li><li><a href="#adding-disks-to-a-pool" class="table-of-contents__link toc-highlight">Adding disks to a pool</a></li><li><a href="#removing-disks-from-a-multi-device-pool" class="table-of-contents__link toc-highlight">Removing disks from a multi-device pool</a></li><li><a href="#change-pool-raid-levels" class="table-of-contents__link toc-highlight">Change Pool RAID Levels</a></li><li><a href="#replace-a-disk-in-a-pool" class="table-of-contents__link toc-highlight">Replace a disk in a pool</a></li><li><a href="#remove-a-disk-from-a-pool" class="table-of-contents__link toc-highlight">Remove a disk from a pool</a></li><li><a href="#minimum-free-space-for-a-pool" class="table-of-contents__link toc-highlight">Minimum Free Space for a Pool</a></li><li><a href="#moving-files-between-a-pool-and-the-array" class="table-of-contents__link toc-highlight">Moving files between a Pool and the array</a><ul><li><a href="#moving-files-from-pool-to-array" class="table-of-contents__link toc-highlight">Moving files from pool to array</a></li><li><a href="#moving-files-from-array-to-pool" class="table-of-contents__link toc-highlight">Moving files from array to pool</a></li></ul></li><li><a href="#multiple-pools" class="table-of-contents__link toc-highlight">Multiple Pools</a><ul><li><a href="#moving-files-between-pools" class="table-of-contents__link toc-highlight">Moving files between pools</a></li></ul></li><li><a href="#selecting-a-file-system-type" class="table-of-contents__link toc-highlight">Selecting a File System type</a></li><li><a href="#setting-a-file-system-type" class="table-of-contents__link toc-highlight">Setting a File System type</a></li><li><a href="#creating-a-file-system-format" class="table-of-contents__link toc-highlight">Creating a File System (Format)</a></li><li><a href="#drive-shows-as-unmountable" class="table-of-contents__link toc-highlight">Drive shows as unmountable</a></li><li><a href="#checking-a-file-system" class="table-of-contents__link toc-highlight">Checking a File System</a><ul><li><a href="#preparing-to-test" class="table-of-contents__link toc-highlight">Preparing to test</a></li><li><a href="#running-the-test-using-the-webgui" class="table-of-contents__link toc-highlight">Running the Test using the webGui</a></li><li><a href="#running-the-test-using-the-command-line" class="table-of-contents__link toc-highlight">Running the Test using the command line</a><ul><li><a href="#xfs-and-reiserfs" class="table-of-contents__link toc-highlight">XFS and ReiserFS</a></li><li><a href="#btrfs" class="table-of-contents__link toc-highlight">BTRFS</a></li><li><a href="#zfs" class="table-of-contents__link toc-highlight">ZFS</a></li></ul></li></ul></li><li><a href="#repairing-a-file-system" class="table-of-contents__link toc-highlight">Repairing a File System</a><ul><li><a href="#preparing-to-repair" class="table-of-contents__link toc-highlight">Preparing to repair</a></li><li><a href="#running-the-repair-using-the-webgui" class="table-of-contents__link toc-highlight">Running the Repair using the webGui</a><ul><li><a href="#xfs-and-reiserfs-1" class="table-of-contents__link toc-highlight">XFS and ReiserFS</a></li><li><a href="#btrfs-1" class="table-of-contents__link toc-highlight">BTRFS</a></li></ul></li><li><a href="#running-the-repair-using-the-command-line" class="table-of-contents__link toc-highlight">Running the Repair using the command line</a><ul><li><a href="#xfs-and-reiserfs-2" class="table-of-contents__link toc-highlight">XFS and ReiserFS</a></li><li><a href="#btrfs-2" class="table-of-contents__link toc-highlight">BTRFS</a></li><li><a href="#zfs-1" class="table-of-contents__link toc-highlight">ZFS</a></li></ul></li></ul></li><li><a href="#changing-a-file-system-type" class="table-of-contents__link toc-highlight">Changing a File System type</a></li><li><a href="#converting-to-a-new-file-system-type" class="table-of-contents__link toc-highlight">Converting to a new File System type</a></li><li><a href="#reformatting-a-drive" class="table-of-contents__link toc-highlight">Reformatting a drive</a></li><li><a href="#reformatting-a-cache-drive" class="table-of-contents__link toc-highlight">Reformatting a cache drive</a></li><li><a href="#btrfs-operations" class="table-of-contents__link toc-highlight">BTRFS Operations</a><ul><li><a href="#balance" class="table-of-contents__link toc-highlight">Balance</a></li><li><a href="#scrub" class="table-of-contents__link toc-highlight">Scrub</a></li></ul></li><li><a href="#array-write-modes" class="table-of-contents__link toc-highlight">Array Write Modes</a><ul><li><a href="#setting-the-write-mode" class="table-of-contents__link toc-highlight">Setting the Write mode</a></li><li><a href="#readmodifywrite-mode" class="table-of-contents__link toc-highlight">Read/Modify/Write mode</a></li><li><a href="#turbo-write-mode" class="table-of-contents__link toc-highlight">Turbo write mode</a></li><li><a href="#ramifications" class="table-of-contents__link toc-highlight">Ramifications</a></li><li><a href="#using-a-cache-drive" class="table-of-contents__link toc-highlight">Using a Cache Drive</a></li></ul></li><li><a href="#read-modes" class="table-of-contents__link toc-highlight">Read Modes</a></li><li><a href="#cache-pools" class="table-of-contents__link toc-highlight">(Cache) Pools</a></li></ul></div></div></div></div></main></div></div><footer class="footer"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class="footer__title">Documentation</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/de/">Home</a></li><li class="footer__item"><a href="https://github.com/unraid/docs" target="_blank" rel="noopener noreferrer" class="footer__link-item">Contribute on Github<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div><div class="col footer__col"><div class="footer__title">Community</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://forums.unraid.net" target="_blank" rel="noopener noreferrer" class="footer__link-item">Forums<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://discordapp.com/invite/unraid" target="_blank" rel="noopener noreferrer" class="footer__link-item">Discord<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div><div class="col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://unraid.net" target="_blank" rel="noopener noreferrer" class="footer__link-item">Unraid Home<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://connect.myunraid.net" target="_blank" rel="noopener noreferrer" class="footer__link-item">Unraid Connect<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://newsletter.unraid.net" target="_blank" rel="noopener noreferrer" class="footer__link-item">Newsletter<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://unraid.net/blog" target="_blank" rel="noopener noreferrer" class="footer__link-item">Blog<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="margin-bottom--sm"><img src="/de/img/un-mark-gradient.svg" alt="Unraid Logo" class="themedImage_ToTc themedImage--light_HNdA footer__logo" width="100"><img src="/de/img/un-mark-gradient.svg" alt="Unraid Logo" class="themedImage_ToTc themedImage--dark_i4oU footer__logo" width="100"></div><div class="footer__copyright"><small>Copyright &copy; 2005-2023 Lime Technology, Inc.<br>Unraid&reg; is a registered trademark of Lime Technology, Inc.</small></div></div></div></footer></div>
-<script src="/de/assets/js/runtime~main.1ec322cb.js"></script>
+<script src="/de/assets/js/runtime~main.e17476ab.js"></script>
 <script src="/de/assets/js/main.87430f03.js"></script>
 </body>
 </html>
