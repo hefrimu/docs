@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[6014],{5212:e=>{e.exports=JSON.parse('{"title":"Unraid OS","description":"Unraid OS Documentation","slug":"/category/unraid-os","permalink":"/category/unraid-os","navigation":{"previous":{"title":"Home","permalink":"/"},"next":{"title":"Getting started","permalink":"/unraid-os/getting-started/"}}}')}}]);
