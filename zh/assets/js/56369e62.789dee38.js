@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[2450],{4793:a=>{a.exports=JSON.parse('{"title":"FAQ","slug":"/category/faq","permalink":"/zh/category/faq","navigation":{"previous":{"title":"Download Archive","permalink":"/zh/unraid-os/download_list"},"next":{"title":"OS","permalink":"/zh/unraid-os/faq/os-faq"}}}')}}]);
